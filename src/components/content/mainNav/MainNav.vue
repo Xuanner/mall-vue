@@ -1,6 +1,6 @@
 <template>
   <common-nav>
-    <common-nav-item>
+    <common-nav-item path='/home'>
       <template v-slot:item-icon>
         <div class="iconfont">&#xe674;</div>
       </template>
@@ -8,7 +8,7 @@
         <div>home</div>
       </template>
     </common-nav-item>
-    <common-nav-item>
+    <common-nav-item path='/type'>
       <template v-slot:item-icon>
         <div class="iconfont">&#xe678;</div>
       </template>
@@ -16,7 +16,7 @@
         <div>Type</div>
       </template>
     </common-nav-item>
-    <common-nav-item>
+    <common-nav-item path='/cart'>
       <template v-slot:item-icon>
         <div class="iconfont">&#xe679;</div>
       </template>
@@ -24,7 +24,7 @@
         <div>Cart</div>
       </template>
     </common-nav-item>
-    <common-nav-item>
+    <common-nav-item path='/user'>
       <template v-slot:item-icon>
         <div class="iconfont">&#xe682;</div>
       </template>
