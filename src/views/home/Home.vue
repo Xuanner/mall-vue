@@ -5,20 +5,32 @@
         <div>{{pageTitle}}</div>
       </template>
     </header-bar>
+    <swiper :banner='slidList'></swiper>
   </div>
 </template>
 
 <script>
   import HeaderBar from 'components/common/headerBar/HeaderBar'
+  import Swiper from 'components/common/swiper/Swiper'
+  import axios from 'axios'
+  import '@/mock/mock.js'
+
   export default {
     name: 'Home',
     data() {
       return {
-        pageTitle: 'Shoping'
+        pageTitle: 'Shoping',
+        slidList: []
       }
     },
     components: {
-      HeaderBar
+      HeaderBar,
+      Swiper
+    },
+    beforeCreate() {
+      axios.get('/swiper.json').then((res) => {
+        this.slidList = res.data.swiper;
+      })
     }
   }
 </script>
