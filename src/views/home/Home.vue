@@ -12,7 +12,7 @@
 <script>
   import HeaderBar from 'components/common/headerBar/HeaderBar'
   import Swiper from 'components/common/swiper/Swiper'
-  import axios from 'axios'
+  import {getSlidBanners} from '@/network/home'
   import '@/mock/mock.js'
 
   export default {
@@ -27,9 +27,9 @@
       HeaderBar,
       Swiper
     },
-    beforeCreate() {
-      axios.get('/swiper.json').then((res) => {
-        this.slidList = res.data.swiper;
+    created() {
+      getSlidBanners().then(res => {
+        this.slidList = res.data.swiper
       })
     }
   }

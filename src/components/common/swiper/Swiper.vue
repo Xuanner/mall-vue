@@ -31,7 +31,7 @@
       }
     },
     props: {
-      banner: []
+      banner: Array
     },
     methods: {
       handlePoint(id) {
