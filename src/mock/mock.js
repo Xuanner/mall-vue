@@ -39,3 +39,7 @@ export var recommendData = Mock.mock('/recommend.json',{
     'link': 'www.baidu.com'
   }]
 })
+
+export var typeNavData = Mock.mock('/type.json', {
+  'type': ['pop', 'hot', 'selected']
+})

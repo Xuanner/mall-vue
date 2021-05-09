@@ -6,7 +6,8 @@
       </template>
     </header-bar>
     <swiper :banner='slidList'></swiper>
-    <Recommend :recommendList='recommendList'></Recommend>
+    <recommend :recommendList='recommendList'></recommend>
+    <type-nav :typeList='type'></type-nav>
   </div>
 </template>
 
@@ -14,7 +15,8 @@
   import HeaderBar from 'components/common/headerBar/HeaderBar'
   import Swiper from 'components/common/swiper/Swiper'
   import Recommend from './childComps/recommend'
-  import {getSlidBanners, getRecommends} from '@/network/home'
+  import TypeNav from 'components/content/typeNav/TypeNav'
+  import {getSlidBanners, getRecommends, getTypeData} from '@/network/home'
 
   export default {
     name: 'Home',
@@ -22,13 +24,15 @@
       return {
         pageTitle: 'Shoping',
         slidList: [],
-        recommendList: []
+        recommendList: [],
+        type: []
       }
     },
     components: {
       HeaderBar,
       Swiper,
-      Recommend
+      Recommend,
+      TypeNav
     },
     created() {
       getSlidBanners().then(res => {
@@ -36,6 +40,9 @@
       })
       getRecommends().then(res => {
         this.recommendList = res.data.recommends
+      })
+      getTypeData().then(res => {
+        this.type = res.data.type
       })
     }
   }

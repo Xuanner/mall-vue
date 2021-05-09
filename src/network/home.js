@@ -12,3 +12,9 @@ export function getRecommends() {
     url: '/recommend.json'
   })
 }
+
+export function getTypeData() {
+  return request({
+    url: '/type.json'
+  })
+}
