@@ -15,3 +15,27 @@ export var swiperData = Mock.mock('/swiper.json',{
     'link': 'www.baidu.com'
   }]
 })
+
+export var recommendData = Mock.mock('/recommend.json',{
+  'recommends': [{
+    'id': 1,
+    'img': "@IMAGE('88x88','#ffcc33')",
+    'title': 'Hot',
+    'link': 'www.baidu.com'
+  },{
+    'id': 2,
+    'img': "@IMAGE('88x88','#fb0a2a')",
+    'title': 'Woman',
+    'link': 'www.baidu.com'
+  },{
+    'id': 3,
+    'img': "@IMAGE('88x88','#02adea')",
+    'title': 'Men',
+    'link': 'www.baidu.com'
+  },{
+    'id': 4,
+    'img': "@IMAGE('88x88','#ccbbff')",
+    'title': 'Children',
+    'link': 'www.baidu.com'
+  }]
+})
