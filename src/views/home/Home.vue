@@ -5,9 +5,37 @@
         <div>{{pageTitle}}</div>
       </template>
     </header-bar>
-    <swiper :banner='slidList'></swiper>
-    <recommend :recommendList='recommendList'></recommend>
-    <type-nav :typeList='type'></type-nav>
+    <div class='home-content'>
+      <swiper :banner='slidList'></swiper>
+      <recommend :recommendList='recommendList'></recommend>
+      <type-nav :typeList='type'></type-nav>
+    <ul>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+      <li>111</li>
+    </ul>
+    </div> 
   </div>
 </template>
 
@@ -49,6 +77,16 @@
 </script>
 
 <style scoped>
+  #home {
+    height: calc(100vh - 55px);
+  }
+  .home-content{
+    position: absolute;
+    top: 44px;
+    bottom: 55px;
+    overflow: scroll;
+    flex:1;
+  }
 </style>
 
 

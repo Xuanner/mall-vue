@@ -1,7 +1,7 @@
 <template>
   <div id="app">
-    <router-view></router-view>
-    <main-nav></main-nav>
+    <router-view class='content'></router-view>
+    <main-nav class='footer'></main-nav>
   </div>
 </template>
 
@@ -19,4 +19,7 @@
 <style>
   @import 'assets/css/base.css';
   
+  .content {
+    height: calc(100vh - 55px);
+  }
 </style>

@@ -15,7 +15,7 @@
     display: flex;
     height: 55px;
     width: 100%;
-    position: absolute;
+    position: fixed;
     left: 0;
     bottom: 0;
     background: #F5F5F5;
