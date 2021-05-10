@@ -37,10 +37,13 @@
   .type-wrap {
     display: flex;
     margin: 10px 0;
-    text-align: center
+    text-align: center;
+    height: 20px;
+    background: #fff;
   }
   .type-item {
     flex: 1;
+    line-height: 20px;
   }
   .type-item span{
     cursor: pointer
