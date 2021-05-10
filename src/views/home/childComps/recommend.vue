@@ -32,7 +32,11 @@
   }
   .recommend-item {
     flex: 1;
-    text-align: center
+    text-align: center;
+    width: 80px;
+  }
+  .recommend-item img{
+    max-width: 80px;
   }
 </style>
 
