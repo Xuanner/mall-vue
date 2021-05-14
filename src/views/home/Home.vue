@@ -5,12 +5,13 @@
         <div>{{pageTitle}}</div>
       </template>
     </header-bar>
-    <div class='home-content'>
+    <div class='home-content' @scroll='handleContentScroll' ref="content">
       <swiper :banner='slidList'></swiper>
       <recommend :recommendList='recommendList'></recommend>
       <type-nav class='type-nav' :typeList='type' @handleClickType='handleClickType'></type-nav>
       <goods-list :goodsList="showGoodsList"></goods-list>
     </div> 
+    <back-top v-show='isShowBackTop' @click.native='backTop'>Top</back-top>
   </div>
 </template>
 
@@ -20,6 +21,7 @@
   import Recommend from './childComps/recommend'
   import TypeNav from 'components/content/typeNav/TypeNav'
   import GoodsList from 'components/content/goodsList/GoodsList'
+  import BackTop from 'components/content/backTop/BackTop'
   import {getSlidBanners, getRecommends, getTypeData, getGoods} from '@/network/home'
 
   export default {
@@ -35,7 +37,8 @@
           'pop': {'page': 0, 'list': []},
           'hot': {'page': 0, 'list': []},
           'sale': {'page': 0, 'list': []}
-        }
+        },
+        isShowBackTop: false
       }
     },
     components: {
@@ -43,7 +46,8 @@
       Swiper,
       Recommend,
       TypeNav,
-      GoodsList
+      GoodsList,
+      BackTop
     },
     created() {
       this.getSlidBanners();
@@ -79,6 +83,13 @@
       handleClickType(index) {
         console.log(this.goods);
         this.showGoodsList = this.goods[this.type[index]].list;
+      },
+      handleContentScroll() {
+        
+        this.isShowBackTop = (this.$refs.content.scrollTop > 150) ? true : false;
+      },
+      backTop() {
+        this.$refs.content.scrollTo(0,0);
       }
     }
   }
