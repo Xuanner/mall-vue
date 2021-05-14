@@ -8,8 +8,8 @@
     <div class='home-content'>
       <swiper :banner='slidList'></swiper>
       <recommend :recommendList='recommendList'></recommend>
-      <type-nav class='type-nav' :typeList='type'></type-nav>
-      <goods-list :goodsList="goods['hot'].list"></goods-list>
+      <type-nav class='type-nav' :typeList='type' @handleClickType='handleClickType'></type-nav>
+      <goods-list :goodsList="showGoodsList"></goods-list>
     </div> 
   </div>
 </template>
@@ -30,6 +30,7 @@
         slidList: [],
         recommendList: [],
         type: [],
+        showGoodsList: [],
         goods: {
           'pop': {'page': 0, 'list': []},
           'hot': {'page': 0, 'list': []},
@@ -48,7 +49,10 @@
       this.getSlidBanners();
       this.getRecommends();
       this.getTypeData();
+      this.getGoods('pop');
       this.getGoods('hot');
+      this.getGoods('sale');
+      this.showGoodsList = this.goods['pop'].list;
     },
     methods: {
       getSlidBanners() {
@@ -71,6 +75,10 @@
         getGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data);
         })
+      },
+      handleClickType(index) {
+        console.log(this.goods);
+        this.showGoodsList = this.goods[this.type[index]].list;
       }
     }
   }

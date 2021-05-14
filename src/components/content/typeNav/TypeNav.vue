@@ -28,6 +28,7 @@
     methods: {
       handleClick(index) {
         this.currentIndex = index;
+        this.$emit('handleClickType', index)
       }
     }
   }
