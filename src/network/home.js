@@ -18,3 +18,15 @@ export function getTypeData() {
     url: '/type.json'
   })
 }
+
+export function getGoods(type, page) {
+  return request({
+    url: '/goods.json',
+    type: 'post',
+    dataType: 'json',
+    data: {
+      type,
+      page
+    }
+  })
+}

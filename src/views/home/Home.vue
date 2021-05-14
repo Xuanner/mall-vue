@@ -9,44 +9,7 @@
       <swiper :banner='slidList'></swiper>
       <recommend :recommendList='recommendList'></recommend>
       <type-nav class='type-nav' :typeList='type'></type-nav>
-    <ul>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-      <li>111</li>
-    </ul>
+      <goods-list :goodsList="goods['hot'].list"></goods-list>
     </div> 
   </div>
 </template>
@@ -56,7 +19,8 @@
   import Swiper from 'components/common/swiper/Swiper'
   import Recommend from './childComps/recommend'
   import TypeNav from 'components/content/typeNav/TypeNav'
-  import {getSlidBanners, getRecommends, getTypeData} from '@/network/home'
+  import GoodsList from 'components/content/goodsList/GoodsList'
+  import {getSlidBanners, getRecommends, getTypeData, getGoods} from '@/network/home'
 
   export default {
     name: 'Home',
@@ -65,25 +29,49 @@
         pageTitle: 'Shoping',
         slidList: [],
         recommendList: [],
-        type: []
+        type: [],
+        goods: {
+          'pop': {'page': 0, 'list': []},
+          'hot': {'page': 0, 'list': []},
+          'sale': {'page': 0, 'list': []}
+        }
       }
     },
     components: {
       HeaderBar,
       Swiper,
       Recommend,
-      TypeNav
+      TypeNav,
+      GoodsList
     },
     created() {
-      getSlidBanners().then(res => {
-        this.slidList = res.data.swiper
-      })
-      getRecommends().then(res => {
-        this.recommendList = res.data.recommends
-      })
-      getTypeData().then(res => {
-        this.type = res.data.type
-      })
+      this.getSlidBanners();
+      this.getRecommends();
+      this.getTypeData();
+      this.getGoods('hot');
+    },
+    methods: {
+      getSlidBanners() {
+        getSlidBanners().then(res => {
+          this.slidList = res.data.swiper
+        })
+      },
+      getRecommends() {
+        getRecommends().then(res => {
+          this.recommendList = res.data.recommends
+        })
+      },
+      getTypeData() {
+        getTypeData().then(res => {
+          this.type = res.data.type
+        })
+      },
+      getGoods(type) {
+        let page = this.goods[type].page;
+        getGoods(type, page).then(res => {
+          this.goods[type].list.push(...res.data);
+        })
+      }
     }
   }
 </script>

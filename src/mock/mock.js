@@ -1,5 +1,9 @@
 import Mock from 'mockjs'
 
+const Random = Mock.Random
+const img1 = Random.image('375x400','#ffcc33');
+const img2 = Random.image('375x400','#fb0a2a');
+const img3 = Random.image('375x400','#02adea');
 export var swiperData = Mock.mock('/swiper.json',{
   'swiper': [{
     'id': 1,
@@ -41,5 +45,155 @@ export var recommendData = Mock.mock('/recommend.json',{
 })
 
 export var typeNavData = Mock.mock('/type.json', {
-  'type': ['pop', 'hot', 'selected']
+  'type': ['pop', 'hot', 'sale']
 })
+
+
+export var goods = Mock.mock(/goods.json/, function(options){
+  switch(JSON.parse(options.body).type){
+    case 'pop':
+      return popGoods;
+    case 'hot':
+      return hotGoods;
+    case 'sale':
+      return saleGoods;
+    default:
+      return popGoods;
+  }
+})
+
+let popGoods = [
+  {
+    'id': 1,
+    'img': img1,
+    'link': 'www.baidu.com',
+    'title': '[pop]this is pop goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 2,
+    'img': img1,
+    'link': 'www.baidu.com',
+    'title': '[pop]this is pop goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 3,
+    'img': img1,
+    'link': 'www.baidu.com',
+    'title': '[pop]this is pop goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 4,
+    'img': img1,
+    'link': 'www.baidu.com',
+    'title': '[pop]this is pop goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 5,
+    'img': img1,
+    'link': 'www.baidu.com',
+    'title': '[pop]this is pop goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 6,
+    'img': img1,
+    'link': 'www.baidu.com',
+    'title': '[pop]this is pop goods',
+    'price': 123.12,
+    'collect': 9
+  }
+];
+let hotGoods = [
+  {
+    'id': 1,
+    'img': img2,
+    'link': 'www.baidu.com',
+    'title': '[hot]this is hot goods',
+    'price': 224.54,
+    'collect': 6
+  },{
+    'id': 2,
+    'img': img2,
+    'link': 'www.baidu.com',
+    'title': '[hot]this is hot goods',
+    'price': 123.12,
+    'collect': 8
+  },{
+    'id': 3,
+    'img': img2,
+    'link': 'www.baidu.com',
+    'title': '[hot]this is hot goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 4,
+    'img': img2,
+    'link': 'www.baidu.com',
+    'title': '[hot]this is hot goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 5,
+    'img': img2,
+    'link': 'www.baidu.com',
+    'title': '[hot]this is hot goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 6,
+    'img': img2,
+    'link': 'www.baidu.com',
+    'title': '[hot]this is hot goods',
+    'price': 123.12,
+    'collect': 9
+  }
+];
+let saleGoods = [
+  {
+    'id': 1,
+    'img': img3,
+    'link': 'www.baidu.com',
+    'title': '[sale]this is sale goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 2,
+    'img': img3,
+    'link': 'www.baidu.com',
+    'title': '[sale]this is sale goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 3,
+    'img': img3,
+    'link': 'www.baidu.com',
+    'title': '[sale]this is sale goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 4,
+    'img': img3,
+    'link': 'www.baidu.com',
+    'title': '[sale]this is sale goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 5,
+    'img': img3,
+    'link': 'www.baidu.com',
+    'title': '[sale]this is sale goods',
+    'price': 123.12,
+    'collect': 9
+  },{
+    'id': 6,
+    'img': img3,
+    'link': 'www.baidu.com',
+    'title': '[sale]this is sale goods',
+    'price': 123.12,
+    'collect': 9
+  }
+];
