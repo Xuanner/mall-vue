@@ -32,6 +32,7 @@
         slidList: [],
         recommendList: [],
         type: [],
+        curtType: '',
         showGoodsList: [],
         goods: {
           'pop': {'page': 0, 'list': []},
@@ -57,6 +58,7 @@
       this.getGoods('hot');
       this.getGoods('sale');
       this.showGoodsList = this.goods['pop'].list;
+      this.curtType = 'pop';
     },
     methods: {
       getSlidBanners() {
@@ -75,21 +77,30 @@
         })
       },
       getGoods(type) {
+        console.log(type);
         let page = this.goods[type].page;
         getGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data);
         })
       },
       handleClickType(index) {
-        console.log(this.goods);
+        this.curtType = this.type[index];
         this.showGoodsList = this.goods[this.type[index]].list;
       },
       handleContentScroll() {
-        
         this.isShowBackTop = (this.$refs.content.scrollTop > 150) ? true : false;
+        this.needLoadMore ? this.loadMore(this.curtType) : '';
       },
       backTop() {
         this.$refs.content.scrollTo(0,0);
+      },
+      loadMore(type) {
+        console.log(type);
+        this.getGoods(type);
+      },
+      needLoadMore() {
+        let contentEle = this.$refs.content;
+        return ((contentEle.scrollTo + contentEle.clientHeight) > contentEle.scrollHeight) ? true : false;
       }
     }
   }
