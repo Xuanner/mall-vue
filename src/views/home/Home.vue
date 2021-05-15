@@ -77,7 +77,6 @@
         })
       },
       getGoods(type) {
-        console.log(type);
         let page = this.goods[type].page;
         getGoods(type, page).then(res => {
           this.goods[type].list.push(...res.data);
@@ -89,7 +88,7 @@
       },
       handleContentScroll() {
         this.isShowBackTop = (this.$refs.content.scrollTop > 150) ? true : false;
-        this.needLoadMore ? this.loadMore(this.curtType) : '';
+        this.needLoadMore() ? this.loadMore(this.curtType) : '';
       },
       backTop() {
         this.$refs.content.scrollTo(0,0);
@@ -99,7 +98,7 @@
       },
       needLoadMore() {
         let contentEle = this.$refs.content;
-        return ((contentEle.scrollTo + contentEle.clientHeight) > contentEle.scrollHeight) ? true : false;
+        return ((contentEle.scrollTop + contentEle.clientHeight) == contentEle.scrollHeight) ? true : false;
       }
     }
   }
