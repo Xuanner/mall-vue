@@ -95,7 +95,6 @@
         this.$refs.content.scrollTo(0,0);
       },
       loadMore(type) {
-        console.log(type);
         this.getGoods(type);
       },
       needLoadMore() {
