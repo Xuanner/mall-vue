@@ -6,7 +6,7 @@
       </template>
     </header-bar>
     <div class='home-content' @scroll='handleContentScroll' ref="content">
-      <swiper :banner='slidList'></swiper>
+      <swiper :banner='slidList' :swiperWidth='swiperWidth'></swiper>
       <recommend :recommendList='recommendList'></recommend>
       <type-nav class='type-nav' :typeList='type' @handleClickType='handleClickType'></type-nav>
       <goods-list :goodsList="showGoodsList"></goods-list>
@@ -39,7 +39,12 @@
           'hot': {'page': 0, 'list': []},
           'sale': {'page': 0, 'list': []}
         },
-        isShowBackTop: false
+        isShowBackTop: false,
+      }
+    },
+    computed: {
+      swiperWidth() {
+        return document.documentElement.offsetWidth;
       }
     },
     components: {

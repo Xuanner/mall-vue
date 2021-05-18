@@ -5,7 +5,7 @@
            v-for='(item) in banner' 
            :key='item.id'>
         <a>
-          <img :src='item.img' />
+          <img :src='item.img' :style="{width: swiperWidth+'px'}"/>
         </a>
       </div>
     </div>
@@ -51,6 +51,7 @@
     mounted() {
       // 开启定时器, 自动滑动图片
       this.startTimer();
+      console.log(this.swiperWidth);
     },
     methods: {
       handlePoint(id) {
@@ -60,21 +61,16 @@
       },
       startTimer() {
         this.playTimer = setInterval(() => {
-          console.log(this.banner.length);
           if(this.curtIndex == (this.banner.length-1)) {
             this.curtIndex = 0;
           }else {
             this.curtIndex++;
           }
-          this.scrollContent();
         }, this.intervalTime)
       },
       stopTimer() {
         clearInterval(this.playTimer);
       },
-      scrollContent() {
-        console.log(11)
-      }
     }
   }
 </script>
