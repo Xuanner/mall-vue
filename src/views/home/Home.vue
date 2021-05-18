@@ -117,7 +117,7 @@
   }
   .type-nav {
     position: sticky;
-    top: 0;
+    top: -1px;
   }
 </style>
 

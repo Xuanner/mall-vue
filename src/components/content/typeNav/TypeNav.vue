@@ -37,7 +37,7 @@
 <style scoped>
   .type-wrap {
     display: flex;
-    margin: 10px 0;
+    padding: 10px 0;
     text-align: center;
     height: 20px;
     background: #fff;
