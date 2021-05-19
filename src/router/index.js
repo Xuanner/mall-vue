@@ -5,6 +5,7 @@ const Home = () => import('../views/home/Home')
 const Type = () => import('../views/type/Type')
 const Cart = () => import('../views/cart/Cart')
 const User = () => import('../views/user/User')
+const Detail = () => import('../views/detail/Detail')
 
 Vue.use(VueRouter)
 
@@ -28,6 +29,10 @@ const routes = [
   {
     path: '/user',
     component: User
+  },
+  {
+    path: '/detail/:id',
+    component: Detail
   }
 ]
 const router = new VueRouter({

@@ -9,7 +9,7 @@
       <swiper :banner='slidList' :swiperWidth='swiperWidth'></swiper>
       <recommend :recommendList='recommendList'></recommend>
       <type-nav class='type-nav' :typeList='type' @handleClickType='handleClickType'></type-nav>
-      <goods-list :goodsList="showGoodsList"></goods-list>
+      <goods-list :goodsList="showGoodsList" @goToDetail='goToDetail'></goods-list>
     </div> 
     <back-top v-show='isShowBackTop' @click.native='backTop'>Top</back-top>
   </div>
@@ -104,6 +104,9 @@
       needLoadMore() {
         let contentEle = this.$refs.content;
         return ((contentEle.scrollTop + contentEle.clientHeight) == contentEle.scrollHeight) ? true : false;
+      },
+      goToDetail(id) {
+        this.$router.push('/detail/'+id);
       }
     }
   }

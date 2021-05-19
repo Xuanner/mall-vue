@@ -51,7 +51,6 @@
     mounted() {
       // 开启定时器, 自动滑动图片
       this.startTimer();
-      console.log(this.swiperWidth);
     },
     methods: {
       handlePoint(id) {
@@ -82,10 +81,6 @@
   }
   .slide {
     display: flex;
-  }
-  .slide-active{
-    transition: transform 300ms;
-    transform: translate3d(-375px, 0, 0);
   }
   .points {
     display: flex;

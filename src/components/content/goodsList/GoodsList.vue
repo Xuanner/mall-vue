@@ -1,9 +1,10 @@
 <template>
   <div class='goods-wrap'>
-    <div class='goods-item' v-for='(item, index) in goodsList' :key='index'>
-      <a>
-        <img :src='item.img'/>
-      </a>
+    <div class='goods-item' 
+      v-for='(item, index) in goodsList' 
+      :key='index'
+      @click='handleClick(item.id)'>
+      <img :src='item.img'/>
       <div class='goods-info'>
         <span>{{item.title}}</span>
         <span>{{item.collect}}</span>
@@ -21,6 +22,11 @@
         default() {
           return []
         }
+      }
+    },
+    methods: {
+      handleClick(id){
+        this.$emit('goToDetail', id);
       }
     }
   }
