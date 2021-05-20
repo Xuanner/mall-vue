@@ -1,5 +1,5 @@
 <template>
-  <div class='swiper-wrap' :style="{width: swiperWidth+'px'}">
+  <div class='swiper-wrap' :style="widthAndHeightStyle">
     <div class='slide' :style="slideClass">
       <div class='slide-item'
            v-for='(item) in banner' 
@@ -31,8 +31,9 @@
       },
       swiperWidth: {
         type: Number,
-        default: 375
-      }
+        default: document.documentElement.offsetWidth
+      },
+      swiperHeight: Number
     },
     data() {
       return {
@@ -44,8 +45,14 @@
       slideClass() {
         return {
           transition: 'transform 300ms',
-          transform: `translate3d(${-this.swiperWidth * this.curtIndex}px, 0, 0)`
+          transform: `translate3d(${-this.swiperWidth * this.curtIndex}px, 0, 0)`,
         };
+      },
+      widthAndHeightStyle() {
+        return {
+          width: `${this.swiperWidth}px`,
+          height: `${this.swiperHeight}px`
+        }
       }
     },
     mounted() {

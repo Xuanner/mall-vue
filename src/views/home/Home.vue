@@ -6,7 +6,7 @@
       </template>
     </header-bar>
     <div class='home-content' @scroll='handleContentScroll' ref="content">
-      <swiper :banner='slidList' :swiperWidth='swiperWidth'></swiper>
+      <swiper :banner='slidList'></swiper>
       <recommend :recommendList='recommendList'></recommend>
       <type-nav class='type-nav' :typeList='type' @handleClickType='handleClickType'></type-nav>
       <goods-list :goodsList="showGoodsList" @goToDetail='goToDetail'></goods-list>
@@ -40,6 +40,7 @@
           'sale': {'page': 0, 'list': []}
         },
         isShowBackTop: false,
+        positionY: 0
       }
     },
     computed: {
@@ -121,7 +122,6 @@
     top: 44px;
     bottom: 55px;
     overflow: scroll;
-    flex:1;
   }
   .type-nav {
     position: sticky;

@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view class='content'></router-view>
+    <keep-alive exclude='Detail'>
+      <router-view class='content'></router-view>
+    </keep-alive>
     <main-nav class='footer'></main-nav>
   </div>
 </template>
