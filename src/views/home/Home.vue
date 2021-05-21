@@ -21,11 +21,12 @@
   import Recommend from './childComps/recommend'
   import TypeNav from 'components/content/typeNav/TypeNav'
   import GoodsList from 'components/content/goodsList/GoodsList'
-  import BackTop from 'components/content/backTop/BackTop'
   import {getSlidBanners, getRecommends, getTypeData, getGoods} from '@/network/home'
+  import {backTopMixin} from '@/common/mixin'
 
   export default {
     name: 'Home',
+    mixins: [backTopMixin],
     data() {
       return {
         pageTitle: 'Shoping',
@@ -53,8 +54,7 @@
       Swiper,
       Recommend,
       TypeNav,
-      GoodsList,
-      BackTop
+      GoodsList
     },
     created() {
       this.getSlidBanners();
@@ -93,7 +93,7 @@
         this.showGoodsList = this.goods[this.type[index]].list;
       },
       handleContentScroll() {
-        this.isShowBackTop = (this.$refs.content.scrollTop > 150) ? true : false;
+        this.showBackTop(this.$refs.content.scrollTop, 150);
         this.needLoadMore() ? this.loadMore(this.curtType) : '';
       },
       backTop() {

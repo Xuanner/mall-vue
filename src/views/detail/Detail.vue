@@ -32,6 +32,7 @@
         <goods-list :goodsList="recommends"></goods-list>
       </div>
     </div>
+    <back-top v-show='isShowBackTop' @click.native='backTop'>Top</back-top>
   </div>
 </template>
 
@@ -40,9 +41,11 @@
   import Swiper from 'components/common/swiper/Swiper'
   import GoodsList from 'components/content/goodsList/GoodsList'
   import { getDetails } from '@/network/detail'
+  import {backTopMixin} from '@/common/mixin'
 
   export default {
     name: 'Detail',
+    mixins: [backTopMixin],
     data(){
       return {
         type: ['商品','参数','评论','推荐'],
@@ -74,12 +77,11 @@
       },
       handleScroll() {
         for(let i=0; i < this.positionY.length; i++) {
-          console.log(this.$refs.content.scrollTop)
           if((i<this.positionY.length-1) && (this.positionY[i] < this.$refs.content.scrollTop && this.$refs.content.scrollTop < this.positionY[i+1])) {
             this.curtIndex = i;
           }
         }
-        
+        this.showBackTop(this.$refs.content.scrollTop, 150);
       },
       handleClick(index) {
         this.curtIndex = index;
