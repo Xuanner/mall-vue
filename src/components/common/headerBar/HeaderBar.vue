@@ -24,6 +24,7 @@
     left: 0;
     z-index: 10;
     width: 100%;
+    line-height: 44px;
   }
   .left, .right  {
     width: 60px;
@@ -32,7 +33,6 @@
   .center {
     flex: 1;
     height: 100%;
-    line-height: 44px;
   }
   .active {
     color: red

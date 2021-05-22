@@ -1,6 +1,9 @@
 <template>
   <div id='detail' class='detail-wrap'>
     <header-bar>
+      <template v-slot:left>
+        <div @click='backPrePage'>back</div>
+      </template>
       <template v-slot:center>
         <div class='header-type'>
           <div v-for='(item, index) in type' :key='index' :class='{active: curtIndex == index}'  @click='handleClick(index)'>{{item}}</div>
@@ -32,6 +35,7 @@
         <goods-list :goodsList="recommends"></goods-list>
       </div>
     </div>
+    <bottom-bar @addCart='addCart'></bottom-bar>
     <back-top v-show='isShowBackTop' @click.native='backTop'>Top</back-top>
   </div>
 </template>
@@ -40,8 +44,10 @@
   import HeaderBar from 'components/common/headerBar/HeaderBar'
   import Swiper from 'components/common/swiper/Swiper'
   import GoodsList from 'components/content/goodsList/GoodsList'
+  import BottomBar from './childComps/BottomBar'
   import { getDetails } from '@/network/detail'
   import {backTopMixin} from '@/common/mixin'
+  import {UPDATE_SHOW_MAIN_NAV, ADD_CART} from '@/store/mutationType'
 
   export default {
     name: 'Detail',
@@ -61,10 +67,15 @@
     components: {
       HeaderBar,
       Swiper,
-      GoodsList
+      GoodsList,
+      BottomBar
     },
     created() {
       this.getDetails(this.$route.params.id);
+      this.$store.dispatch(UPDATE_SHOW_MAIN_NAV, false);
+    },
+    destroyed() {
+      this.$store.dispatch(UPDATE_SHOW_MAIN_NAV, true);
     },
     methods: {
       getDetails(id) {
@@ -94,6 +105,19 @@
         this.positionY.push(this.$refs.comment.offsetTop);
         this.positionY.push(this.$refs.recommend.offsetTop);
         this.positionY.push(Number.MAX_VALUE)
+      },
+      backPrePage() {
+        this.$router.push('/home');
+      },
+      addCart() {
+        // 1. 准备商品信息
+        let info = {};
+        info.id = this.$route.params.id;
+        info.imgUrl = this.product.images[0];
+        info.title = this.product.title;
+        info.price = this.product.price;
+        // 2. 分发到action
+        this.$store.dispatch(ADD_CART, info);
       }
     }
   }

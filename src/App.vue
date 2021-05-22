@@ -3,7 +3,7 @@
     <keep-alive exclude='Detail'>
       <router-view class='content'></router-view>
     </keep-alive>
-    <main-nav class='footer'></main-nav>
+    <main-nav class='footer' v-if='showMainNav'></main-nav>
   </div>
 </template>
 
@@ -14,6 +14,11 @@
     name: 'App',
     components: {
       MainNav
+    },
+    computed: {
+      showMainNav() {
+        return this.$store.state.showMainNav;
+      }
     }
   }
 </script>

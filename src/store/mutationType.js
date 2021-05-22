@@ -1,0 +1,2 @@
+export const UPDATE_SHOW_MAIN_NAV = 'UPDATE_SHOW_MAIN_NAV'
+export const ADD_CART = 'ADD_CART'
