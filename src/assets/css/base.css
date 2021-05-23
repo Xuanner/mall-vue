@@ -45,12 +45,9 @@ table {
 }
 @font-face {
   font-family: 'iconfont';
-  src: url('../iconfont/iconfont.eot');
-  src: url('../iconfont/iconfont.eot?#iefix') format('embedded-opentype'),
-      url('../iconfont/iconfont.woff2') format('woff2'),
-      url('../iconfont/iconfont.woff') format('woff'),
-      url('../iconfont/iconfont.ttf') format('truetype'),
-      url('../iconfont/iconfont.svg#iconfont') format('svg');
+  src: url('../iconfont/iconfont.woff2?t=1621770966561') format('woff2'),
+       url('../iconfont/iconfont.woff?t=1621770966561') format('woff'),
+       url('../iconfont/iconfont.ttf?t=1621770966561') format('truetype');
 }
 .iconfont {
   font-family: "iconfont" !important;
