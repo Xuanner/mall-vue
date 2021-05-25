@@ -3,9 +3,13 @@ import {UPDATE_SHOW_MAIN_NAV, ADD_CART, CHANGE_CHECKED, ALL_CKECKED} from './mut
 const actions = {
   [UPDATE_SHOW_MAIN_NAV]({commit}, info) {
     commit(UPDATE_SHOW_MAIN_NAV, info);
+    
   },
   [ADD_CART]({commit}, info) {
-    commit(ADD_CART, info)
+    return new Promise((resolve) => {
+      commit(ADD_CART, info)
+      resolve('添加成功');
+    })
   },
   [CHANGE_CHECKED]({commit}, id) {
     commit(CHANGE_CHECKED, id);

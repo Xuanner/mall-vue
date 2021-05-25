@@ -117,8 +117,11 @@
         info.title = this.product.title;
         info.price = this.product.price;
         // 2. 分发到action
-        this.$store.dispatch(ADD_CART, info);
-        this.$toast.show('aaa')
+        this.$store.dispatch(ADD_CART, info).then(res => {
+            console.log(res);
+            this.$toast.show(res);
+        });
+        
       }
     }
   }
